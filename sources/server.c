@@ -6,17 +6,16 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:55:09 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/09/27 22:36:37 by vkist-si         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:33:19 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-/* int main(void)
+int main(void)
 {
 	printf("PID:%d\n", getpid());
 	while (1)
 		pause ();
 	return (0);
 }
- */
