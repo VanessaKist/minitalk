@@ -13,26 +13,27 @@
 #ifndef MINITALK_H
 # define MINITALK_H
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
+# include <stdio.h>
+# include <sys/types.h>
+# include <unistd.h>
 # include <limits.h>
 # include <signal.h>
 # include <stdarg.h>
 # include <stdbool.h>
-# include <stdlib.h>
 
-#include "../libraries/42_libft/libft.h"
+# include "../libraries/42_libft/libft.h"
 
-int	ft_isdigit(int c);
+int		ft_isdigit(int c);
 size_t	ft_strlen(const char *str);
 void	ft_putstr_fd(char *s, int fd);
-int             ft_atoi(const char *str);
+int		ft_atoi(const char *str);
 
 typedef struct s_var
 {
-	char str;
-	int bits_shifted;
+	char	str;
+	int		bits_shifted;
 }	t_var;
+
+t_var	g_var;
 
 #endif

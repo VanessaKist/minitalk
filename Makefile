@@ -49,4 +49,7 @@ fclean: clean
 
 re: fclean all
 
+norm: 
+	@norminette ./sources ./includes
+
 PHONY: all clean fclean re

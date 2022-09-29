@@ -12,51 +12,25 @@
 
 #include "../includes/minitalk.h"
 
-/* int	ft_isdigit(int c)
-{
-	if (c > 47 && c < 58)
-		return (2048);
-	return (0);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (*str)
-	{
-		str++;
-		i++;
-	}
-	return (i);
-}
-
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
-}
- */
-
 static int	check_args(char *pid)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (pid[i])
 	{
 		if (ft_isdigit(pid[i]))
 			i++;
 		else
-			return 1;
+			return (1);
 	}
-	return 0;
+	return (0);
 }
 
-static void send_message(int pid, char *msg)
+static void	send_message(int pid, char *msg)
 {
 	int	i;
-	int bits_counter;
+	int	bits_counter;
 
 	i = 0;
 	while (msg[i] != '\0')
@@ -75,7 +49,7 @@ static void send_message(int pid, char *msg)
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
@@ -86,7 +60,7 @@ int main(int argc, char **argv)
 	{
 		ft_putstr_fd("Invalid PID number\n", 2);
 		return (1);
-	} 
+	}
 	send_message(ft_atoi(argv[1]), argv[2]);
-	return 0 ;
+	return (0);
 }
