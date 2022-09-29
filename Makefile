@@ -42,12 +42,12 @@ $(LIBFT):
 	@make -C $(PATH_LIBFT)
 
 clean:
-	@$(REMOVE) $(PATH_OBJS)
 	@make clean -C $(PATH_LIBFT)
+	@$(REMOVE) $(PATH_OBJS)
 
 fclean: clean
-	@$(REMOVE) $(NAME)
 	@make fclean -C $(PATH_LIBFT)
+	rm $(SV) $(CL)
 
 re: fclean all
 
