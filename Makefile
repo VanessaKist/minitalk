@@ -18,8 +18,6 @@ LIBFT = $(PATH_LIBFT)libft.a
 
 CFLAGS = -Wall -Wextra -Werror
 
-REMOVE = rm -rf
-
 all: $(NAME)
 
 $(NAME): $(SV) $(CL) 
@@ -43,7 +41,7 @@ $(LIBFT):
 
 clean:
 	@make clean -C $(PATH_LIBFT)
-	@$(REMOVE) $(PATH_OBJS)
+	rm -rf $(PATH_OBJS)
 
 fclean: clean
 	@make fclean -C $(PATH_LIBFT)
