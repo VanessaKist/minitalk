@@ -6,7 +6,7 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:51:31 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/09/29 21:47:47 by vkist-si         ###   ########.fr       */
+/*   Updated: 2022/10/12 23:35:07 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <signal.h>
 # include <stdarg.h>
 # include <stdbool.h>
-
 # include "../libraries/42_libft/libft.h"
 
 int		ft_isdigit(int c);
