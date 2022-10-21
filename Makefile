@@ -16,7 +16,7 @@ OBJ_CL = $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRC_CL))
 
 LIBFT = $(PATH_LIBFT)libft.a
 
-//CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
@@ -48,6 +48,9 @@ fclean: clean
 	rm $(SV) $(CL)
 
 re: fclean all
+
+vg:
+	@valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes 
 
 norm: 
 	@norminette ./sources ./includes

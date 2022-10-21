@@ -6,7 +6,7 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:51:31 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/10/12 23:35:07 by vkist-si         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:02:00 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define MINITALK_H
 
 # include <stdio.h>
-# include <sys/types.h>
-# include <unistd.h>
-# include <limits.h>
 # include <signal.h>
 # include <stdarg.h>
 # include <stdbool.h>
@@ -32,7 +29,5 @@ typedef struct s_var
 	char	str;
 	int		bits_shifted;
 }	t_var;
-
-t_var	g_var;
 
 #endif

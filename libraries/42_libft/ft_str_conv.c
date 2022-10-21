@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_str_conv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:08:16 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:27:52 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/06/08 22:58:22 by coder             #+#    #+#             */
+/*   Updated: 2022/10/21 17:02:37 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_str_conv(int len, va_list arg)
 {
-	if (!lst || !f)
-		return ;
-	while (lst)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
+	char	*s;
+
+	s = va_arg(arg, char *);
+	if (!s)
+		s = "(null)";
+	write(1, s, ft_strlen(s));
+	len = len + ft_strlen(s);
+	return (len);
 }

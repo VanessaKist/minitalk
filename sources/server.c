@@ -6,7 +6,7 @@
 /*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 00:55:09 by vkist-si          #+#    #+#             */
-/*   Updated: 2022/10/14 18:29:13 by vkist-si         ###   ########.fr       */
+/*   Updated: 2022/10/21 18:05:51 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(void)
 {
 	g_var.str = 0;
 	g_var.bits_shifted = 0;
-	printf("PID:%d\n", getpid());
+	ft_printf("PID:%d\n", getpid());
 	send_signals();
 	return (0);
 }

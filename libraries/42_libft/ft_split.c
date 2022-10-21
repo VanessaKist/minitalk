@@ -3,39 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/23 20:47:14 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:28:49 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/04/20 17:40:11 by coder             #+#    #+#             */
+/*   Updated: 2022/09/17 02:12:43 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(const char *s, char c)
+static int	cntwrds(char const *s, char c)
 {
-	int	words;
-	int	is_word;
-	int	i;
+	unsigned int	i;
+	int				cntw;
 
-	words = 0;
-	is_word = 1;
+	cntw = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] != c && is_word)
-		{
-			is_word = 0;
-			words++;
-		}
-		else if (s[i] == c)
-			is_word = 1;
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
+			cntw++;
+		while (s[i] && (s[i] != c))
+			i++;
 	}
-	return (words);
+	return (cntw);
 }
 
-static void	ft_allocate(char **ans, int word, char c, char *aux)
+static void	ft_alloc(char **ans, int word, char c, char *temp)
 {
 	int	i;
 	int	j;
@@ -46,32 +42,32 @@ static void	ft_allocate(char **ans, int word, char c, char *aux)
 	j = 0;
 	while (i < word)
 	{
-		while (aux[j] == c)
+		while (temp[j] == c)
 			j++;
 		start = j;
-		while (aux[j] != c && aux[j])
+		while (temp[j] != c && temp[j])
 		{
-			if (aux[j + 1] == c || aux[j + 1] == 0)
+			if (temp[j + 1] == c || temp[j + 1] == 0)
 				end = j;
 			j++;
 		}
-		ans[i] = ft_substr(&aux[start], 0, (end - start + 1));
+		ans[i] = ft_substr(&temp[start], 0, (end - start + 1));
 		i++;
 	}
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**ans;
-	int		word;
+	char	**res;
+	int		str;
 
 	if (!s && s[0] == 0)
 		return (NULL);
-	word = ft_count_words(s, c);
-	ans = (char **)malloc(sizeof(char *) * (word + 1));
-	if (!ans)
+	str = cntwrds(s, c);
+	res = (char **)malloc(sizeof(char *) * (str + 1));
+	if (!res)
 		return (NULL);
-	ft_allocate(ans, word, c, (char *)s);
-	ans[word] = NULL;
-	return (ans);
+	ft_alloc(res, str, c, (char *)s);
+	res[str] = NULL;
+	return (res);
 }

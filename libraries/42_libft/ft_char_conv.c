@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_char_conv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:04:08 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:27:55 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/06/03 22:34:38 by coder             #+#    #+#             */
+/*   Updated: 2022/10/21 17:01:44 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_char_conv(const char *str, int len, va_list arg)
 {
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
+	long int	i;
+
+	if (*str == '%')
+	{
+		write(1, "%", 1);
+		len++;
+	}
+	else
+	{
+		i = va_arg(arg, int);
+		write(1, &i, 1);
+		len++;
+	}
+	return (len);
 }

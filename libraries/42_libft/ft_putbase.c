@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_putbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:05:50 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:27:52 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/06/09 19:27:13 by coder             #+#    #+#             */
+/*   Updated: 2022/10/21 17:02:26 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_putbase(unsigned long num, char *base)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	size_t	len_base;
+
+	len_base = ft_strlen(base);
+	if (num / len_base > 0)
+		ft_putbase(num / len_base, base);
+	ft_putchar_fd(base[num % len_base], 1);
 }

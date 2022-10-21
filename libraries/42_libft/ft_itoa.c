@@ -3,77 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 21:44:48 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:27:39 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/04/21 17:14:39 by coder             #+#    #+#             */
+/*   Updated: 2022/09/17 20:54:40 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_get_len(int n)
+static size_t	ft_get_len(int nb)
 {
 	int	len;
 
 	len = 0;
-	if (n < 0)
-	{
-		n *= -1;
+	if (nb <= 0)
 		len++;
-	}
-	while (n)
+	while (nb)
 	{
-		n /= 10;
 		len++;
+		nb = nb / 10;
 	}
 	return (len);
 }
 
-static char	*ft_exceptions(int n)
-{
-	char	*max;
-	char	*ret;
-
-	max = "-2147483648";
-	if (n == 0)
-	{
-		ret = ft_calloc(2, sizeof(char));
-		ret[0] = '0';
-		return (ret);
-	}
-	else
-	{
-		ret = ft_strdup(max);
-		return (ret);
-	}
-}
-
 char	*ft_itoa(int n)
 {
-	char	*str;
 	int		len;
+	char	*str;
+	long	nb;
 
-	if (n == 0 || n == -2147483648)
-	{
-		str = ft_exceptions(n);
-		return (str);
-	}
-	else
-		len = ft_get_len(n);
+	len = ft_get_len(n);
+	nb = n;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str[len--] = '\0';
-	if (n < 0)
+	if (nb < 0)
 	{
 		str[0] = '-';
-		n = n * -1;
+		nb = -nb;
 	}
-	while (n)
+	if (nb == 0)
+		str[0] = '0';
+	str[len--] = '\0';
+	while (nb)
 	{
-		str[len--] = (n % 10) + '0';
-		n /= 10;
+		str[len] = nb % 10 + '0';
+		len--;
+		nb = nb / 10;
 	}
 	return (str);
 }

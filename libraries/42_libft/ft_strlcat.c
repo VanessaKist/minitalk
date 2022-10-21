@@ -3,37 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 15:00:31 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:29:23 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/09/17 21:01:45 by vkist-si          #+#    #+#             */
+/*   Updated: 2022/09/17 21:01:47 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *d, const char *s, size_t n)
 {
 	size_t	i;
-	size_t	len_total;
-	size_t	len_dst;
-	size_t	len_src;
+	size_t	dlen;
+	size_t	slen;
+	size_t	totlen;
+	size_t	aux2;
 
-	len_dst = ft_strlen(dst);
-	len_src = ft_strlen(src);
 	i = 0;
-	if (size > len_dst)
-	{
-		len_total = len_src + len_dst;
-		while (src[i] && (len_dst + 1) < size)
+	dlen = ft_strlen(d);
+	slen = ft_strlen(s);
+	aux2 = dlen;
+	if (n <= dlen)
+		totlen = slen + n;
+	if (n > dlen)
+	{	
+		totlen = dlen + slen;
+		while (s[i] && (aux2 + 1) < n)
 		{
-			dst[len_dst] = src[i];
-			len_dst++;
+			d[aux2] = s[i];
+			aux2++;
 			i++;
 		}
-		dst[len_dst] = '\0';
+		d[aux2] = '\0';
 	}
-	else
-		len_total = len_src + size;
-	return (len_total);
+	return (totlen);
 }

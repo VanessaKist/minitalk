@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:05:16 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:27:42 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/06/15 01:11:07 by coder             #+#    #+#             */
+/*   Updated: 2022/10/21 17:02:03 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_intlen(unsigned long i, int base)
 {
-	t_list	*last;
+	int	cont;
 
-	if (!lst || !new)
-		return ;
-	last = ft_lstlast(*lst);
-	if (last != NULL)
-		last->next = new;
-	else
-		*lst = new;
+	cont = 0;
+	if (i == 0)
+		return (1);
+	while (i > 0)
+	{
+		i = i / base;
+		cont++;
+	}
+	return (cont);
 }

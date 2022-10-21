@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_int_conv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ridalgo- <ridalgo-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: vkist-si <vkist-si@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/27 18:03:31 by ridalgo-          #+#    #+#             */
-/*   Updated: 2022/05/03 15:28:18 by ridalgo-         ###   ########.fr       */
+/*   Created: 2022/06/03 22:20:01 by coder             #+#    #+#             */
+/*   Updated: 2022/10/21 17:03:41 by vkist-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_int_conv(int len, va_list arg)
 {
-	int	i;
+	long int	i;
 
-	i = 0;
-	while (lst)
+	i = va_arg(arg, int);
+	if (i < 0)
 	{
-		lst = lst->next;
-		i++;
+		write(1, "-", 1);
+		len++;
+		i = i * -1;
 	}
-	return (i);
+	ft_putbase(i, "0123456789");
+	len = len + ft_intlen(i, 10);
+	return (len);
 }
